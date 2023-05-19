@@ -1,0 +1,60 @@
+{% extends 'chat/base.html' %}
+{% load static %}
+
+{% block title %}Chat{% endblock title %}
+{% block content %}
+
+<div class="main-content" id="panel">
+        
+    <div class="container-fluid pt-3">
+        <div class="row removable">
+            <div class="col-lg-12 px-sm-0">
+                <div class="card shadow-none px-0 bg-transparent mt-0 mb-4">
+                    <div class="card-body px-0 pb-0">
+                        <div class="px-0 pb-4">
+                            <div class="row flex-row">
+                                <div class="col-lg-3 mb-4">
+                                    {% include 'chat/users_list.html' %}
+                                </div>
+                                <div class="col-lg-6">
+                                    {% include 'chat/chat_room.html' %}
+
+                                </div>
+                                <div class="col-lg-3">
+                                    {% include 'chat/pdf_list.html' %}
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // get the user list container element
+    var userList = document.querySelector('#user-list');
+    
+    // add event listener to the user list container
+    userList.addEventListener('click', function(event) {
+        // check if the clicked element is a user
+        if (event.target.classList.contains('user')) {
+            // get the user ID from the data attribute
+            var userId = event.target.dataset.userId;
+    
+            // send an AJAX request to fetch the messages
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/chat/get-messages/' + userId + '/');
+            xhr.onload = function() {
+                // update the content of the chat box
+                var chatMessages = document.querySelector('#chat-messages');
+                chatMessages.innerHTML = xhr.responseText;
+            };
+            xhr.send();
+        }
+    });
+    </script>
+{% endblock %}
+
+

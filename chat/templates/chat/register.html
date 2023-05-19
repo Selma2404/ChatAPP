@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Register Page</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="box-form">
+	<div class="left">
+		<div class="overlay">
+		<h1>Hello Friend.</h1>
+		<h2><p>Try this secure chat app for a better secure life </p></h2>
+		</div>
+	</div>
+	
+	
+		<div class="right">
+		<h5>Register</h5>
+		<p>Already have an account ?  <a href="/">  Login</a> </p>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="inputs">
+				<input type="text" placeholder="Username" {{form.username}}
+                <input type="text" placeholder="Email" {{form.email}}   
+                <input type="text" placeholder="First Name" {{form.first_name}} 
+                <input type="text" placeholder="Last Name" {{form.last_name}}            
+				<input type="password" placeholder="password" {{form.password1}}
+               <input type="password" placeholder="Repeat password" {{form.password2}}
+               
+            </div>
+			<br><br>
+
+			<br>
+			<button type="submit" >Register</button>
+	</div>
+    {% if messages %}
+        {% for message in messages %}
+             <script>alert("{{ message }}")</script>
+        {% endfor %}
+    {% endif %}
+
+
+</div>
+<!-- partial -->
+<script> 
+		 
+    //Query All input fields
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder='Username..';
+    form_fields[2].placeholder='E-mail Address..';
+    form_fields[3].placeholder='First Name..';
+    form_fields[4].placeholder='Lat Name..';
+    form_fields[5].placeholder='Enter password...';
+    form_fields[6].placeholder='Re-enter Password...';
+
+
+for (var field in form_fields){	
+        form_fields[field].className += ' form-control' 
+    }
+</script>
+</body>
+</html>

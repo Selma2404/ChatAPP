@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+</head>
+<body>
+
+<!-- partial:index.partial.html -->
+<div class="box-form">
+	<div class="left">
+		<div class="overlay">
+		<h1>Hello Friend.</h1>
+		<h2><p>Try this secure chat app for a better secure life </p></h2>
+		</div>
+	</div>
+	
+	
+		<div class="right">
+		<h5>Login</h5>
+		<p>Don't have an account? <a href="/register/">Creat Your Account</a> it takes less than a minute</p>
+
+		<form method="post">
+			{% csrf_token %}
+			<input type="text" placeholder="username " id="username" name="username">
+			<br>
+			<input type="password" placeholder="password" id="password" name="password">
+			<br>
+			<br><br>
+
+			<br>
+			<button type="submit">Log in</button>
+		</form>
+
+	</div>
+	{% if messages %}
+        {% for message in messages %}
+             <script>alert("{{ message }}")</script>
+        {% endfor %}
+    {% endif %}
+
+
+
+	
+</div>
+<!-- partial -->
+  
+</body>
+</html>

@@ -1,0 +1,30 @@
+
+{% load static %}
+
+{% block content %}
+<div class="card max-height-vh-70 h-100 overflow-auto overflow-x-hidden mb-5 mb-lg-0" style="max-height: 70vh;">
+
+    <br>
+    <div id='user-list' class="card-body p-2">
+    {% for user in users %}
+        {% if user.id != request.user.id %}
+        <div class="user" data-user-id="{{ user.id }}">
+        <a href="{% url 'chat_room' user.chatuser.id %}" class="d-block p-2 rounded-lg bg-gradient-primary">
+            <div class="d-flex p-2">
+                <img alt="Image" src="{% static 'img/userPFP.png'%}" class="avatar shadow">
+                <div class="ml-2">
+                    <div class="justify-content-between align-items-center">
+                        <h4 class="text-white mb-0 mt-1"> Room {{user.chatuser.id}}<span class="badge badge-success"></span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </a>
+        </div>
+        {% endif %}
+        <br>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
