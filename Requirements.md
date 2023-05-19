@@ -1,6 +1,7 @@
 # Requirements
 Python3 ==> Linux : sudo apt install python3 
             Windows : https://www.python.org/downloads/
+	
 Django Framework ==> Linux : pip3 install django
                      Windows : https://docs.djangoproject.com/en/3.2/howto/windows
        
