@@ -4,6 +4,9 @@ Python3 ==> Linux : sudo apt install python3
 	
 Django Framework ==> Linux : pip3 install django
                      Windows : https://docs.djangoproject.com/en/3.2/howto/windows
+
+Install channel :Linux : pip3 install channels
+                 Windows :  py -m pip install channels
        
 Activate the virtual envirenement : source myvenv/bin/activate
 
